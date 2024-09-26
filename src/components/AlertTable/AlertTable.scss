@@ -1,0 +1,400 @@
+// .alert-table {
+//   width: 100%;
+//   margin: 0px 0px;
+//   overflow: hidden; // Remove horizontal scrollbar for the whole table container
+//   font-size: 14px;
+//   position: relative; // Make it relative for positioning the table parts
+// }
+
+// .custom-table {
+//   width: 100%;
+//   border-collapse: collapse;
+//   border-spacing: 0;
+//   thead {
+//     position: sticky; // Makes the header sticky
+//     top: 0; // Sticks the header at the top
+//     z-index: 2; // Ensures header is on top
+//     background-color: #f4f2ff; // Keeps header background consistent
+//   }
+// }
+
+// .custom-table th,
+// .custom-table td {
+//   padding: 12px 15px;
+//   border-bottom: 1px solid #d9d5ec;
+//   text-align: left;
+// }
+
+// .custom-table th {
+//   background-color: #f4f2ff;
+//   color: #6e6893;
+// }
+
+// .custom-table td {
+//   background-color: #fff;
+//   color: #25213b;
+// }
+
+// .custom-table tbody {
+//   display: block;
+//   min-height: 340px; // Set the max height for scrollable tbody
+//   max-height: 360px;
+//   overflow-y: auto;
+//   width: 100%;
+// }
+
+// .custom-table thead,
+// .custom-table tbody tr {
+//   display: table;
+//   width: 100%;
+//   table-layout: fixed; // Ensures consistent column widths
+// }
+
+// .custom-table tr:hover {
+//   background-color: #f1f1f1;
+// }
+
+// .pagination-container {
+//   width: 100%;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 10px;
+//   background-color: #f4f2ff;
+// }
+
+// .pagination-controls {
+//   display: flex;
+//   align-items: center;
+// }
+
+// .pagination-controls button {
+//   margin: 0 5px;
+//   padding: 5px 10px;
+//   cursor: pointer;
+//   color: #6e6893;
+//   border: none;
+// }
+
+// .pagination-controls span {
+//   margin: 0 10px;
+// }
+
+// .filter-search-container {
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-start;
+//   gap: 10px;
+//   padding: 10px 20px;
+// }
+
+// .search-input {
+//   padding: 8px;
+//   background-color: #f4f2ff;
+//   border: 1px solid #ddd;
+//   border-radius: 4px;
+//   width: 300px;
+// }
+
+// .filter-btn {
+//   padding: 8px 16px;
+//   border-radius: 4px;
+//   border: 1px solid #c6c2de;
+//   cursor: pointer;
+// }
+
+// .action-buttons button {
+//   padding: 8px 16px;
+//   margin-left: 10px;
+//   background-color: #e0e0e0;
+//   border: none;
+//   cursor: pointer;
+// }
+
+// .no-data {
+//   text-align: center;
+//   color: #999;
+// }
+
+// .custom-table {
+//   width: 100%;
+//   border-collapse: collapse;
+//   border-spacing: 0;
+//   table-layout: fixed; // Ensures columns are sized according to defined widths
+//   thead {
+//     position: sticky; // Makes the header sticky
+//     top: 0; // Sticks the header at the top
+//     z-index: 2; // Ensures header is on top
+//     background-color: #f4f2ff; // Keeps header background consistent
+//   }
+// }
+
+// .custom-table th,
+// .custom-table td {
+//   padding: 12px 15px;
+//   border-bottom: 1px solid #d9d5ec;
+//   text-align: left;
+// }
+
+// .custom-table th {
+//   background-color: #f4f2ff;
+//   color: #6e6893;
+// }
+
+// .custom-table td {
+//   background-color: #fff;
+//   color: #25213b;
+// }
+
+// // Setting the column width
+// .custom-table th:nth-child(1), // Checkbox column
+// .custom-table td:nth-child(1) {
+//   width: 5%; // Checkbox takes 5% width
+// }
+
+// .custom-table th:nth-child(2), // Center Name column
+// .custom-table td:nth-child(2) {
+//   width: 20%; // Center Name takes 20% width
+// }
+
+// .custom-table th:nth-child(3), // Camera Name column
+// .custom-table td:nth-child(3) {
+//   width: 20%; // Camera Name takes 20% width
+// }
+
+// .custom-table th:nth-child(4), // Location column
+// .custom-table td:nth-child(4) {
+//   width: 20%; // Location takes 20% width
+// }
+
+// .custom-table th:nth-child(5), // Feature column
+// .custom-table td:nth-child(5) {
+//   width: 15%; // Feature takes 15% width
+// }
+
+// .custom-table th:nth-child(6), // Time column
+// .custom-table td:nth-child(6) {
+//   width: 10%; // Time takes 10% width
+// }
+
+// .custom-table th:nth-child(7), // Priority column
+// .custom-table td:nth-child(7) {
+//   width: 10%; // Priority takes 10% width
+// }
+
+// // Hover effect on rows
+// .custom-table tr:hover {
+//   background-color: #f1f1f1;
+// }
+
+// .pagination-container {
+//   width: 100%;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 10px;
+//   background-color: #f4f2ff;
+// }
+
+// .pagination-controls {
+//   display: flex;
+//   align-items: center;
+// }
+
+// .pagination-controls button {
+//   margin: 0 5px;
+//   padding: 5px 10px;
+//   cursor: pointer;
+//   color: #6e6893;
+//   border: none;
+// }
+
+// .pagination-controls span {
+//   margin: 0 10px;
+// }
+
+// .filter-search-container {
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-start;
+//   gap: 10px;
+//   padding: 10px 20px;
+// }
+
+// .search-input {
+//   padding: 8px;
+//   background-color: #f4f2ff;
+//   border: 1px solid #ddd;
+//   border-radius: 4px;
+//   width: 300px;
+// }
+
+// .filter-btn {
+//   padding: 8px 16px;
+//   border-radius: 4px;
+//   border: 1px solid #c6c2de;
+//   cursor: pointer;
+// }
+
+// .action-buttons button {
+//   padding: 8px 16px;
+//   margin-left: 10px;
+//   background-color: #e0e0e0;
+//   border: none;
+//   cursor: pointer;
+// }
+
+// .no-data {
+//   text-align: center;
+//   color: #999;
+// }
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed; // Ensures columns are sized according to defined widths
+
+  thead {
+    position: sticky; // Makes the header sticky
+    top: 0; // Sticks the header at the top
+    z-index: 2; // Ensures header is on top
+    background-color: #f4f2ff; // Keeps header background consistent
+  }
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #d9d5ec;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: #f4f2ff;
+  color: #6e6893;
+}
+
+.custom-table td {
+  background-color: #fff;
+  color: #25213b;
+}
+
+// Setting the column width
+.custom-table th:nth-child(1), // Checkbox column
+.custom-table td:nth-child(1) {
+  width: 5%; // Checkbox takes 5% width
+}
+
+.custom-table th:nth-child(2), // Center Name column
+.custom-table td:nth-child(2) {
+  width: 20%; // Center Name takes 20% width
+}
+
+.custom-table th:nth-child(3), // Camera Name column
+.custom-table td:nth-child(3) {
+  width: 20%; // Camera Name takes 20% width
+}
+
+.custom-table th:nth-child(4), // Location column
+.custom-table td:nth-child(4) {
+  width: 20%; // Location takes 20% width
+}
+
+.custom-table th:nth-child(5), // Feature column
+.custom-table td:nth-child(5) {
+  width: 20%; // Feature takes 15% width
+}
+
+.custom-table th:nth-child(6), // Time column
+.custom-table td:nth-child(6) {
+  width: 15%; // Time takes 10% width
+}
+
+.custom-table th:nth-child(7), // Priority column
+.custom-table td:nth-child(7) {
+  width: 10%; // Priority takes 10% width
+}
+
+// Set max height for the table body to make it scrollable
+.custom-table tbody {
+  display: block;
+  min-height: 360px;
+  max-height: 370px; // Set the max height for scrollable tbody
+  overflow-y: auto; // Enable vertical scrolling for tbody
+  width: 100%;
+}
+
+// Ensure table rows and columns stay aligned when tbody scrolls
+.custom-table thead,
+.custom-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed; // Ensures consistent column widths
+}
+
+.custom-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.pagination-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f4f2ff;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-controls button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #6e6893;
+  border: none;
+}
+
+.pagination-controls span {
+  margin: 0 10px;
+}
+
+.filter-search-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px 20px;
+}
+
+.search-input {
+  padding: 8px;
+  background-color: #f4f2ff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 300px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid #c6c2de;
+  cursor: pointer;
+}
+
+.action-buttons button {
+  padding: 8px 16px;
+  margin-left: 10px;
+  background-color: #e0e0e0;
+  border: none;
+  cursor: pointer;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+}
