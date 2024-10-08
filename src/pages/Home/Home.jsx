@@ -100,8 +100,8 @@ export default function PermanentDrawerLeft() {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
-            backgroundColor: "#3C4046", // Change this to your desired sidebar color
-            color: "#ffffff", // Optional: Change text color in the sidebar
+            backgroundColor: "#3C4046",
+            color: "#ffffff",
             borderRadius: "10px",
           },
         }}

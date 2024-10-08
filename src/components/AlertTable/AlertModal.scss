@@ -1,0 +1,169 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background-color: #e0e0e0;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+}
+
+.filter-search-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.search-input {
+  padding: 8px;
+  background-color: #f4f2ff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 250px;
+}
+
+.export-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: #6e6893;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.filter-btn {
+  background-color: #f4f2ff;
+  color: black;
+  border: 1px solid gray;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background-color: rgb(79, 121, 246);
+  color: white;
+  border: 1px solid rgb(35, 87, 246);
+}
+
+.alert-modal-table {
+  width: 100%;
+  margin: 0px 0px;
+  min-height: 420px;
+  overflow: hidden;
+  font-size: 14px;
+  position: relative;
+}
+
+.custom-modal-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #f4f2ff;
+  }
+}
+
+.custom-modal-table th,
+.custom-modal-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #d9d5ec;
+  text-align: center;
+}
+
+.custom-modal-table th {
+  background-color: #f4f2ff;
+  color: #6e6893;
+}
+
+.custom-modal-table td {
+  background-color: #fff;
+  color: #25213b;
+}
+
+.custom-modal-table tbody {
+  display: block;
+  max-height: 350px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.custom-modal-table thead,
+.custom-modal-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.custom-modal-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  background-color: #f4f2ff;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-controls button {
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.no-data {
+  text-align: center;
+  padding: 10px;
+  color: #999;
+}

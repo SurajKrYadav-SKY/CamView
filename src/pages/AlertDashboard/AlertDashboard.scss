@@ -1,161 +1,3 @@
-// .alert-dashboard {
-//   .filter-section {
-//     display: flex;
-//     align-items: center;
-//     justify-content: flex-start;
-//     gap: 15px; // Ensures consistent spacing between all elements
-
-//     button {
-//       padding: 0.8rem;
-//       background-color: white;
-//       border: 1px solid #c6c2de;
-//       color: #25213b;
-//       border-radius: 4px;
-//       cursor: pointer;
-//       font-size: 1.2rem;
-
-//       &:hover {
-//         background-color: #0056b3;
-//       }
-//     }
-
-//     .search-input {
-//       // width: 400px;
-//       input {
-//         width: 420px;
-//         padding: 01rem;
-//         border: none;
-//         border-radius: 4px;
-//         font-size: 1rem;
-//         background-color: #f4f2ff;
-
-//         &:focus {
-//           border-color: #007bff;
-//           outline: none;
-//         }
-//       }
-//     }
-
-//     .dropdown-container {
-//       display: flex;
-//       gap: 15px; // Remove any additional gap between dropdowns
-
-//       .dropdown {
-//         color: #25213b;
-//         select {
-//           padding: 0.8rem;
-//           border: none;
-//           border-radius: 4px;
-//           font-size: 1.2rem;
-//           background-color: #f4f2ff;
-//           cursor: pointer;
-
-//           &:focus {
-//             border-color: #007bff;
-//             outline: none;
-//           }
-
-//           option {
-//             padding: 0.5rem;
-//           }
-//         }
-//       }
-//     }
-//   }
-//   .graph-alert-section {
-//     .graph-section {
-//       width: 48%;
-//     }
-//     .alert-section {
-//       .top-section {
-//         display: flex;
-//         justify-content: space-between;
-//         padding: 20px;
-
-//         .toggle-buttons-container {
-//           display: flex;
-//           align-items: center;
-//           gap: 24px;
-
-//           .toggle-button {
-//             display: flex;
-//             align-items: center;
-//             gap: 10px;
-
-//             .toggle {
-//               width: 50px; // Increased width to allow more space for circle movement
-//               height: 25px;
-//               padding: 3px;
-//               border-radius: 30px;
-//               background-color: #333;
-//               position: relative;
-//               cursor: pointer;
-//               transition: background-color 0.3s ease;
-
-//               &.active {
-//                 background-color: gray;
-
-//                 .toggle-circle {
-//                   left: 25px; // Adjust this value to properly position the circle when active
-//                 }
-//               }
-
-//               .toggle-circle {
-//                 width: 25px;
-//                 height: 25px;
-//                 background-color: white;
-//                 border-radius: 50%;
-//                 position: absolute;
-//                 top: 50%;
-//                 transform: translateY(-50%);
-//                 left: 3px; // Default position when toggle is not active
-//                 transition: left 0.3s ease;
-//               }
-//             }
-
-//             span {
-//               font-size: 16px;
-//               color: #333;
-//             }
-//           }
-
-//           .action-buttons {
-//             display: flex;
-//             gap: 16px;
-
-//             .btn {
-//               padding: 0.5rem 1.2rem;
-//               font-size: 1rem;
-//               border-radius: 50px;
-//               border: 1px solid #4c8bf5;
-//               background: none;
-//               color: #4c8bf5;
-//               cursor: pointer;
-//               transition: all 0.3s ease;
-
-//               &:hover {
-//                 background-color: rgba(76, 139, 245, 0.1);
-//               }
-
-//               &.primary {
-//                 &:hover {
-//                   background-color: rgba(76, 139, 245, 0.2);
-//                 }
-//               }
-
-//               &.disabled {
-//                 border-color: #ccc;
-//                 color: #ccc;
-//                 cursor: not-allowed;
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
 .alert-dashboard {
   .filter-section {
     display: flex;
@@ -180,8 +22,60 @@
 
       .filter-icon {
         width: 20px; // Set the width of the icon
-        height: 20px; // Set the height of the icon
-        margin-right: 8px; // Space between the icon and text
+        height: 20px;
+        margin-right: 8px;
+      }
+    }
+
+    .filter-popup {
+      position: absolute;
+      top: 150px;
+      left: 265px;
+      background-color: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      width: 250px;
+
+      .filter-popup h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .filter-category {
+        margin-bottom: 20px;
+        p {
+          font-size: 14px;
+          font-weight: 600;
+          color: #8c52ff;
+        }
+        label {
+          display: flex;
+          justify-content: space-between;
+          font-size: 14px;
+          margin-bottom: 8px;
+        }
+        input {
+          margin-right: 8px;
+        }
+      }
+      .action-btn {
+        display: flex;
+        justify-content: space-between;
+        .close-popup-btn {
+          background-color: #8c52ff;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          padding: 8px 12px;
+          cursor: pointer;
+        }
+
+        .close-popup-btn:hover {
+          background-color: #5e32cc;
+        }
       }
     }
 
@@ -213,7 +107,7 @@
         label {
           position: absolute;
           left: 14px;
-          top: 14px;
+          top: 10px;
           font-size: 1.2rem;
           color: #6e6893;
           transition: 0.2s ease all;
@@ -224,8 +118,8 @@
             font-size: 0.8rem;
             color: #25213b;
             background-color: #f4f2ff;
-            border-radius: 4px; /* Adjusted for consistency */
-            padding: 0 4px; /* Added padding to prevent overlap */
+            border-radius: 4px;
+            padding: 0 4px;
           }
         }
 
@@ -263,40 +157,44 @@
   }
 
   .graph-alert-section {
-    display: flex; // Aligns the sections in a row
-    justify-content: space-between; // Pushes the sections to the extremes (left and right)
-    align-items: flex-start; // Ensures both sections are aligned at the top
-    width: 100%; // Ensures the container takes full width
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
     gap: 50px;
 
     .graph-section {
       flex: 5;
-      width: 100%;
+      width: 70%;
     }
 
     .alerts-section {
-      flex: 5;
-      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 100%;
+      margin-top: 1rem;
       .top-section {
         display: flex;
+        max-width: 100%;
         justify-content: space-between;
-        padding: 20px;
-        margin-bottom: 20px;
+        padding: 1.25rem;
+        margin-bottom: 1.25rem;
 
         .toggle-buttons-container {
           display: flex;
           align-items: center;
-          gap: 24px;
+          gap: 1rem; // Use rem instead of px
 
           .toggle-button {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 0.5rem;
 
             .toggle {
-              width: 50px;
-              height: 28px;
-              padding: 5px;
+              width: 3.3rem;
+              height: 1.7rem;
+              padding: 0.5rem;
               border-radius: 30px;
               background-color: #333;
               position: relative;
@@ -304,45 +202,44 @@
               transition: background-color 0.3s ease;
 
               &.active {
-                background-color: gray;
-
+                background-color: rgb(54, 176, 252);
                 .toggle-circle {
-                  left: 25px; // Adjusted for proper circle positioning
+                  left: 1.6rem; // Adjust to rem
                 }
               }
 
               .toggle-circle {
-                width: 25px;
-                height: 25px;
+                width: 1.5rem; // Use rem instead of px
+                height: 1.5rem;
                 background-color: white;
                 border-radius: 50%;
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
-                left: 3px;
+                left: 0.2rem; // Adjust to rem
                 transition: left 0.3s ease;
               }
             }
 
             span {
-              font-size: 18px;
+              font-size: 1rem; // Use rem for font scaling
               color: #333;
             }
           }
 
           .action-buttons {
             display: flex;
-            gap: 16px;
+            gap: 0.4rem;
 
             .btn {
-              padding: 0.8rem 1.2rem;
-              font-size: 1rem;
-              border-radius: 5px;
-              border: 1px solid #7a5cfa;
+              padding: 0.6rem 0.8rem;
+              font-size: 0.7rem;
+              border-radius: 0.2rem;
+              border: 0.1rem solid #7a5cfa;
               background: none;
               color: #7a5cfa;
               cursor: pointer;
-              transition: all 0.3s ease-in-out;
+              transition: all 0.2s ease-in-out;
 
               &.primary {
                 background-color: white;
@@ -353,36 +250,42 @@
                 background-color: lightgray;
                 color: darkgray;
               }
+
+              &:hover {
+                background-color: rgba(122, 92, 250, 0.1);
+              }
             }
           }
         }
       }
+
       .bottom-section {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: flex-end;
-        // justify-content: center;
-        gap: 20px 30px;
+        width: 100%;
+        gap: 1.5rem;
+
         .alert-card {
           position: relative;
-          padding: 20px;
+          padding: 2rem; // Adjust padding for scaling
           background-color: #f4f4f9;
           border-radius: 2px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
             0 6px 20px rgba(0, 0, 0, 0.1);
           display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          height: 100px; // Adjust height as per your design
-          width: 200px;
+          flex-direction: row;
+          height: 20%;
+          width: 30%;
+          cursor: pointer;
 
           p {
             margin: 0;
             font-size: 1rem;
             color: #333;
             position: absolute;
-            top: 10px; // Position message at the top-left
+            top: 10px;
             left: 10px;
           }
 
@@ -390,31 +293,36 @@
             font-size: 1.3rem;
             color: rgb(95, 95, 95);
             position: absolute;
-            bottom: 10px; // Position count at the bottom-right
+            bottom: 10px;
             right: 10px;
           }
+        }
+
+        .selected {
+          border: 0.2rem solid rgb(133, 133, 248);
+          background-color: rgba(176, 176, 245, 0.395);
         }
       }
     }
   }
   .horizontal-line {
-    width: 100%; // Full width of the parent container
-    height: 2px; // Thickness of the line
-    background-color: #ccc; // Line color (light gray)
-    margin: 40px 0; // Space above and below the line
-    border-radius: 4px; // Smooth edges for the line
+    width: 100%;
+    height: 2px;
+    background-color: #ccc;
+    margin: 40px 0;
+    border-radius: 4px;
     opacity: 0.8;
   }
   .table-image-section {
-    display: flex; // Ensures the sections are in the same line
-    gap: 20px; // Optional: Adjust the space between the two sections
+    display: flex;
+    gap: 20px;
 
     .table-section {
-      flex: 6; // Occupies 60% of the space (6/10)
+      flex: 6;
     }
 
     .image-section {
-      flex: 4; // Occupies 40% of the space (4/10)
+      flex: 4;
     }
   }
 }

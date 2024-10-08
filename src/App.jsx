@@ -4,6 +4,7 @@ import TicketSummary from "./pages/TicketSummary/TicketSummary";
 import AlertDashboard from "./pages/AlertDashboard/AlertDashboard";
 import TicketDashboard from "./pages/TicketDashboard/TicketDashboard";
 import TicketStats from "./pages/TicketStats/TicketStats";
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   // Layout component with Outlet to render child routes
@@ -21,6 +22,10 @@ function App() {
       path: "/",
       element: <Layout />,
       children: [
+        {
+          path: "/",
+          element: <HomePage />,
+        },
         {
           path: "ticket_summary",
           element: <TicketSummary />,
@@ -45,3 +50,11 @@ function App() {
 }
 
 export default App;
+
+// import "./App.css";
+
+// function App() {
+//   return <></>;
+// }
+
+// export default App;
