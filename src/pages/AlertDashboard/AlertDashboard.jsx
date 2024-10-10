@@ -19,6 +19,23 @@ const AlertDashboard = () => {
 
   const { rows } = useContext(StoreContext);
 
+  // Access alert features from the environment variable
+  const allAlertFeaturesString = import.meta.env.VITE_ALERT_FEATURES;
+
+  // Parse the environment variable to create mapping
+  const featureMapping = allAlertFeaturesString
+    ? allAlertFeaturesString.split(",").reduce((acc, feature) => {
+        const [friendlyName, actualName] = feature
+          .split(":")
+          .map((name) => name.trim());
+        acc[friendlyName] = actualName;
+        return acc;
+      }, {})
+    : {};
+
+  // Extract user-friendly feature names from the mapping
+  const allAlertFeatures = Object.keys(featureMapping);
+
   useEffect(() => {
     const states = [...new Set(rows.map((row) => row.state))];
     setUniqueStates(states);
@@ -141,28 +158,32 @@ const AlertDashboard = () => {
 
   const totalAlerts = filteredRows.length;
 
-  const featureWiseAlerts = filteredRows.reduce((acc, row) => {
-    acc[row.feature] = (acc[row.feature] || 0) + 1;
+  // Calculate feature-wise alerts using the mapping
+  const featureWiseAlerts = allAlertFeatures.reduce((acc, feature) => {
+    const actualFeatureName = featureMapping[feature]; // Get the actual feature name from mapping
+    acc[feature] = filteredRows.filter(
+      (row) => row.feature === actualFeatureName
+    ).length; // Count the alerts
     return acc;
   }, {});
 
-  // console.log(rows);
+  // Construct alertsData
+  const alertsData = allAlertFeatures.map((feature, index) => ({
+    id: index + 1,
+    message: feature,
+    count: featureWiseAlerts[feature] || 0, // Use the count from featureWiseAlerts
+  }));
 
-  const alertsData = [
-    { id: 1, message: "Total Alerts", count: totalAlerts },
-    ...Object.entries(featureWiseAlerts).map(([feature, count], index) => ({
-      id: index + 2,
-      message: feature,
-      count,
-    })),
-  ];
+  alertsData.unshift({ id: 0, message: "Total Alerts", count: totalAlerts });
 
-  const handleCardClick = (feature) => {
+  //card selection logic
+  const handleCardClick = (friendlyFeatureName) => {
+    const actualFeatureName = featureMapping[friendlyFeatureName]; // Get the actual feature name
     setSelectedFeatures((prevSelected) => {
-      if (prevSelected.includes(feature)) {
-        return prevSelected.filter((item) => item !== feature);
+      if (prevSelected.includes(actualFeatureName)) {
+        return prevSelected.filter((item) => item !== actualFeatureName);
       } else {
-        return [...prevSelected, feature];
+        return [...prevSelected, actualFeatureName];
       }
     });
   };
@@ -210,6 +231,8 @@ const AlertDashboard = () => {
     selectedFeatures.length === 0
       ? filteredRows
       : filteredRows.filter((row) => selectedFeatures.includes(row.feature));
+
+  // console.log("alerts data for the card : " + alertsData);
 
   return (
     <div className="alert-dashboard">
@@ -371,7 +394,6 @@ const AlertDashboard = () => {
           <p>
             <strong>Total Alerts: {totalAlerts}</strong>
           </p>
-          {/*<Line data={data} options={options} />*/}
           <Charts
             type="line"
             width={750}
@@ -415,18 +437,24 @@ const AlertDashboard = () => {
             </div>
           </div>
           <div className="bottom-section">
-            {alertsData.map((alert) => (
-              <div
-                className={`alert-card ${
-                  selectedFeatures.includes(alert.message) ? "selected" : ""
-                }`}
-                key={alert.id}
-                onClick={() => handleCardClick(alert.message)}
-              >
-                <p>{alert.message}</p>
-                <strong>{alert.count}</strong>
-              </div>
-            ))}
+            {alertsData.map((alert) => {
+              const actualFeatureName = featureMapping[alert.message]; // Get the actual feature name
+
+              return (
+                <div
+                  className={`alert-card ${
+                    selectedFeatures.includes(actualFeatureName)
+                      ? "selected"
+                      : ""
+                  }`} // Apply selected class based on the actual feature name
+                  key={alert.id}
+                  onClick={() => handleCardClick(alert.message)} // Pass friendly name to handleCardClick
+                >
+                  <p>{alert.message}</p>
+                  <strong>{alert.count}</strong>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
