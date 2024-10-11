@@ -179,7 +179,7 @@ const AlertTable = ({ searchQuery, isToggled, rows }) => {
                       <td>
                         <span
                           style={{
-                            padding: "5px 15px",
+                            padding: "5px 12px",
                             backgroundColor: "#6A94FF",
                             borderRadius: "2px",
                             cursor: "pointer",

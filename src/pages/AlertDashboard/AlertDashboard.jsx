@@ -19,22 +19,35 @@ const AlertDashboard = () => {
 
   const { rows } = useContext(StoreContext);
 
-  // Access alert features from the environment variable
-  const allAlertFeaturesString = import.meta.env.VITE_ALERT_FEATURES;
+  // // Access alert features from the environment variable
+  // const allAlertFeaturesString = import.meta.env.VITE_ALERT_FEATURES;
 
-  // Parse the environment variable to create mapping
-  const featureMapping = allAlertFeaturesString
-    ? allAlertFeaturesString.split(",").reduce((acc, feature) => {
-        const [friendlyName, actualName] = feature
-          .split(":")
-          .map((name) => name.trim());
-        acc[friendlyName] = actualName;
-        return acc;
-      }, {})
-    : {};
+  // // Parse the environment variable to create mapping
+  // const featureMapping = allAlertFeaturesString
+  //   ? allAlertFeaturesString.split(",").reduce((acc, feature) => {
+  //       const [friendlyName, actualName] = feature
+  //         .split(":")
+  //         .map((name) => name.trim());
+  //       acc[friendlyName] = actualName;
+  //       return acc;
+  //     }, {})
+  //   : {};
 
-  // Extract user-friendly feature names from the mapping
-  const allAlertFeatures = Object.keys(featureMapping);
+  // // Extract user-friendly feature names from the mapping
+  // const allAlertFeatures = Object.keys(featureMapping);
+
+  const allAlertFeaturesArray = JSON.parse(import.meta.env.VITE_ALERT_FEATURES);
+
+  // Create a feature mapping from the new JSON array
+  const featureMapping = allAlertFeaturesArray.reduce((acc, featureObj) => {
+    acc[featureObj.card_name] = featureObj.feature; // Map card_name to actual feature name
+    return acc;
+  }, {});
+
+  // Extract user-friendly feature names from the mapping (card names)
+  const allAlertFeatures = allAlertFeaturesArray.map(
+    (featureObj) => featureObj.card_name
+  );
 
   useEffect(() => {
     const states = [...new Set(rows.map((row) => row.state))];
@@ -158,27 +171,52 @@ const AlertDashboard = () => {
 
   const totalAlerts = filteredRows.length;
 
-  // Calculate feature-wise alerts using the mapping
-  const featureWiseAlerts = allAlertFeatures.reduce((acc, feature) => {
-    const actualFeatureName = featureMapping[feature]; // Get the actual feature name from mapping
-    acc[feature] = filteredRows.filter(
-      (row) => row.feature === actualFeatureName
-    ).length; // Count the alerts
+  // // Calculate feature-wise alerts using the mapping
+  // const featureWiseAlerts = allAlertFeatures.reduce((acc, feature) => {
+  //   const actualFeatureName = featureMapping[feature]; // Get the actual feature name from mapping
+  //   acc[feature] = filteredRows.filter(
+  //     (row) => row.feature === actualFeatureName
+  //   ).length; // Count the alerts
+  //   return acc;
+  // }, {});
+
+  const featureWiseAlerts = allAlertFeaturesArray.reduce((acc, featureObj) => {
+    const { card_name, feature } = featureObj; // Extract friendly name and actual feature name
+    acc[card_name] = filteredRows.filter(
+      (row) => row.feature === feature
+    ).length;
     return acc;
   }, {});
 
-  // Construct alertsData
-  const alertsData = allAlertFeatures.map((feature, index) => ({
+  // // Construct alertsData
+  // const alertsData = allAlertFeatures.map((feature, index) => ({
+  //   id: index + 1,
+  //   message: feature,
+  //   count: featureWiseAlerts[feature] || 0, // Use the count from featureWiseAlerts
+  // }));
+
+  const alertsData = allAlertFeaturesArray.map((featureObj, index) => ({
     id: index + 1,
-    message: feature,
-    count: featureWiseAlerts[feature] || 0, // Use the count from featureWiseAlerts
+    message: featureObj.card_name,
+    count: featureWiseAlerts[featureObj.card_name] || 0,
   }));
 
   alertsData.unshift({ id: 0, message: "Total Alerts", count: totalAlerts });
 
-  //card selection logic
-  const handleCardClick = (friendlyFeatureName) => {
-    const actualFeatureName = featureMapping[friendlyFeatureName]; // Get the actual feature name
+  // //card selection logic
+  // const handleCardClick = (friendlyFeatureName) => {
+  //   const actualFeatureName = featureMapping[friendlyFeatureName]; // Get the actual feature name
+  //   setSelectedFeatures((prevSelected) => {
+  //     if (prevSelected.includes(actualFeatureName)) {
+  //       return prevSelected.filter((item) => item !== actualFeatureName);
+  //     } else {
+  //       return [...prevSelected, actualFeatureName];
+  //     }
+  //   });
+  // };
+
+  const handleCardClick = (cardName) => {
+    const actualFeatureName = featureMapping[cardName];
     setSelectedFeatures((prevSelected) => {
       if (prevSelected.includes(actualFeatureName)) {
         return prevSelected.filter((item) => item !== actualFeatureName);
